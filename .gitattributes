@@ -1,7 +1,12 @@
+# Ignore vendor & legacy code
 RTE/* linguist-vendored
 Drivers/CMSIS/* linguist-vendored
 Legacy/* linguist-vendored
 Project/* linguist-vendored
 
+# Ignore pure C files from stats
+*.c linguist-vendored
+
+# Force C++
 *.cpp linguist-language=C++
 *.hpp linguist-language=C++
