@@ -1,6 +1,7 @@
 RTE/* linguist-vendored
 Drivers/CMSIS/* linguist-vendored
 Legacy/* linguist-vendored
+Project/* linguist-vendored
 
 *.cpp linguist-language=C++
 *.hpp linguist-language=C++
