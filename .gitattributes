@@ -1,0 +1,14 @@
+# Ignore vendor, generated and compatibility code in GitHub language stats
+RTE/* linguist-vendored
+Drivers/CMSIS/* linguist-vendored
+Legacy/* linguist-vendored
+Project/* linguist-vendored
+ThirdParty/* linguist-vendored
+
+# Ignore pure C support files from language stats
+*.c linguist-vendored
+*.s linguist-vendored
+
+# Force project C++ files to be counted as C++
+*.cpp linguist-language=C++
+*.hpp linguist-language=C++
