@@ -77,3 +77,33 @@ jobs:
       - name: Run tests
         run: |
           ctest --test-dir build-tests --output-on-failure
+  docker-build-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: |
+          docker build -t stm32-fw-ci .
+
+      - name: Build firmware inside Docker
+        run: |
+          docker run --rm -v ${{ github.workspace }}:/workspace stm32-fw-ci \
+            cmake -B build-docker -G Ninja \
+            -DCMAKE_TOOLCHAIN_FILE=cmake/gcc-arm-none-eabi.cmake
+
+          docker run --rm -v ${{ github.workspace }}:/workspace stm32-fw-ci \
+            cmake --build build-docker
+
+      - name: Run unit tests inside Docker
+        run: |
+          docker run --rm -v ${{ github.workspace }}:/workspace stm32-fw-ci \
+            cmake -S Tests -B build-tests-docker -G Ninja
+
+          docker run --rm -v ${{ github.workspace }}:/workspace stm32-fw-ci \
+            cmake --build build-tests-docker
+
+          docker run --rm -v ${{ github.workspace }}:/workspace stm32-fw-ci \
+            ctest --test-dir build-tests-docker --output-on-failure
