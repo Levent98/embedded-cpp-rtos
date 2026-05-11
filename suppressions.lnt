@@ -1,0 +1,13 @@
+// suppressions.lnt
+
+// 1. Kütüphane dosyalarını sustur (En önemli adım)
+-wlib(1)
+
+// 2. Kütüphane yollarını tanıt (Buradaki yolları kendi PC'ne göre güncelle)
++libdir("C:\Program Files (x86)\GNU Arm Embedded Toolchain\10 2021.07\*")
+
+// 3. Spesifik hataları projeden tamamen gizle
+-e586      // Pragma ve Union uyarılarını kapat
+-e9141     // Global declaration notlarını gizle
+-e537      // Tekrarlanan include uyarısını gizle
+-e451      // Include guard uyarısını kütüphaneler için gizle
