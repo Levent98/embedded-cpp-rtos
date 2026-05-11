@@ -260,6 +260,14 @@ This helps identify:
 
 ---
 
+## Requirements Traceability
+
+The project includes a requirements traceability matrix mapping firmware requirements to implementation modules and automated tests.
+
+See: [docs/requirements.md](docs/requirements.md)
+
+
+
 # License
 
 This project is intended for educational, embedded systems, and industrial firmware development purposes.
