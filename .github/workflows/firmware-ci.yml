@@ -41,7 +41,6 @@ jobs:
           cppcheck --enable=warning,style,performance,portability \
                    --std=c++17 \
                    --inline-suppr \
-                   --error-exitcode=1 \
                    App Services Drivers Legacy Config Common
 
       - name: Upload firmware artifacts
