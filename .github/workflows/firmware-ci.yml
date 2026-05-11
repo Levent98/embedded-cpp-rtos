@@ -53,3 +53,27 @@ jobs:
             build/**/*.bin
             build/**/*.map
             build/**/*.su
+
+  unit-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install native tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake ninja-build g++
+
+      - name: Configure tests
+        run: |
+          cmake -S Tests -B build-tests -G Ninja
+
+      - name: Build tests
+        run: |
+          cmake --build build-tests
+
+      - name: Run tests
+        run: |
+          ctest --test-dir build-tests --output-on-failure
