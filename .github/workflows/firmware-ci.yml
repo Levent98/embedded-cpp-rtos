@@ -16,8 +16,9 @@ jobs:
       - name: Install ARM GCC
         run: |
           sudo apt update
-          sudo apt install -y --no-install-recommends \
+          sudo apt install -y \
             gcc-arm-none-eabi \
+            libstdc++-arm-none-eabi-newlib \
             cmake \
             ninja-build
 
