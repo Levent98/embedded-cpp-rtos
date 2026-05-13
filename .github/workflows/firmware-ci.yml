@@ -13,14 +13,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install ARM GCC
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y \
-            cmake \
-            ninja-build \
-            gcc-arm-none-eabi \
-            binutils-arm-none-eabi
+-      name: Install ARM GCC
+       run: |
+         sudo apt update
+         sudo apt install -y --no-install-recommends \
+         gcc-arm-none-eabi \
+         cmake \
+         ninja-build
 
       - name: Configure
         run: |
